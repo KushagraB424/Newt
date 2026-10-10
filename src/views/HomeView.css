@@ -1,0 +1,165 @@
+.home-view-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-4);
+  max-width: 1040px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.home-explore-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.explore-question {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-title);
+  line-height: var(--line-height-title);
+  color: var(--ink);
+  margin: 0;
+}
+
+.home-shortcut-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.shortcut-chip {
+  min-height: 48px;
+  padding: 0 var(--space-4);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-label);
+}
+
+.home-recents-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.recents-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recents-title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-title);
+  line-height: var(--line-height-title);
+  color: var(--ink);
+  margin: 0;
+}
+
+.view-map-link {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-label);
+}
+
+.mastery-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.mastery-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  transition: transform var(--motion-press) ease;
+}
+
+.mastery-card:hover {
+  transform: translateY(-2px);
+}
+
+.mastery-ring {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  border: var(--border-stroke);
+  flex-shrink: 0;
+}
+
+.mastery-ring.got-it {
+  background-color: var(--got-it-soft);
+  color: var(--got-it-deep);
+  border-color: var(--got-it);
+}
+
+.mastery-ring.sky {
+  background-color: var(--sky-soft);
+  color: var(--sky);
+  border-color: var(--sky);
+}
+
+.mastery-ring.spark {
+  background-color: var(--paper);
+  color: var(--spark-deep);
+  border-color: var(--spark);
+}
+
+.mastery-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mastery-topic-name {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-label);
+  color: var(--ink);
+  margin: 0;
+}
+
+.mastery-status-pill {
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  font-weight: 700;
+  width: fit-content;
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+}
+
+.mastery-status-pill.got-it {
+  background-color: var(--got-it-soft);
+  color: var(--got-it-deep);
+}
+
+.mastery-status-pill.solid {
+  background-color: var(--sky-soft);
+  color: var(--sky);
+}
+
+.mastery-status-pill.getting-it {
+  background-color: var(--not-yet-soft);
+  color: var(--not-yet-deep);
+}
+
+.mastery-review-text {
+  font-family: var(--font-family-body);
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.card-play-btn {
+  min-height: 42px;
+  padding: 0 var(--space-3);
+  font-size: 14px;
+}

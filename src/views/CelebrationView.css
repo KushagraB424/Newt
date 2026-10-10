@@ -1,0 +1,7 @@
+.celebration-view-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-7) var(--space-4);
+  flex: 1;
+}

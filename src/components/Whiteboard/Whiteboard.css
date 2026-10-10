@@ -1,0 +1,183 @@
+.whiteboard-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card);
+  border: var(--border-stroke);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 100%;
+}
+
+.whiteboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid var(--grid);
+  background-color: var(--card);
+}
+
+.whiteboard-tabs {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.wb-tab {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  background: transparent;
+  font: var(--type-label);
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all var(--motion-press) ease;
+}
+
+.wb-tab.active {
+  background-color: var(--paper);
+  color: var(--ink);
+  border-color: var(--ink);
+  font-weight: 800;
+}
+
+.wb-close-btn {
+  font-size: 15px;
+}
+
+.whiteboard-stage {
+  padding: var(--space-4);
+  min-height: 320px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.whiteboard-svg {
+  flex: 1;
+  display: block;
+}
+
+.drawn-element {
+  animation: stroke-draw 600ms ease-out both;
+}
+
+@keyframes stroke-draw {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pen-lead-indicator {
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.whiteboard-narration-strip {
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--tutor-soft);
+  border: 2px solid var(--tutor);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.narration-speaker {
+  font: var(--type-label);
+  color: var(--tutor);
+  font-weight: 800;
+}
+
+.narration-text {
+  flex: 1;
+  font: var(--type-body);
+  color: var(--ink);
+  margin: 0;
+  font-style: italic;
+}
+
+.beat-progress-badge {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tutor);
+  background-color: var(--card);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.wb-tab-panel {
+  padding: var(--space-5);
+  flex: 1;
+  overflow-y: auto;
+}
+
+.wb-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+}
+
+.wb-step-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--grid);
+}
+
+.wb-step-row.completed {
+  background-color: var(--paper);
+  border-color: var(--ink);
+}
+
+.step-idx {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.step-detail p {
+  margin: var(--space-1) 0 0 0;
+  font: var(--type-body);
+  color: var(--ink-muted);
+}
+
+.wb-notes-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.wb-notes-content h3 {
+  font: var(--type-title);
+  color: var(--ink);
+  margin: 0;
+}
+
+.wb-notes-content ul {
+  padding-left: var(--space-5);
+}
+
+.whiteboard-foot {
+  padding: var(--space-3) var(--space-4);
+  border-top: 2px solid var(--grid);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

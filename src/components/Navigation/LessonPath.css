@@ -1,0 +1,94 @@
+.lesson-path-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  background-color: var(--card);
+  border: var(--border-stroke);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-4);
+  width: 100%;
+  overflow-x: auto;
+}
+
+.steps-horizontal-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.path-step-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--motion-press) ease;
+  white-space: nowrap;
+}
+
+.step-indicator-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  border: 2px solid var(--ink);
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+.step-name-text {
+  font: var(--type-label);
+  color: var(--ink);
+}
+
+/* Completed: got-it green */
+.path-step-item.completed .step-indicator-mark {
+  background-color: var(--got-it);
+  color: #ffffff;
+  border-color: var(--got-it-deep);
+}
+
+.path-step-item.completed .step-name-text {
+  color: var(--got-it-deep);
+}
+
+/* Current: spark yellow */
+.path-step-item.current {
+  background-color: var(--paper);
+  border-color: var(--spark-edge);
+}
+
+.path-step-item.current .step-indicator-mark {
+  background-color: var(--spark);
+  border-color: var(--spark-edge);
+  color: var(--ink);
+}
+
+.path-step-item.current .step-name-text {
+  font-weight: 800;
+}
+
+/* Upcoming: muted grey outline */
+.path-step-item.upcoming {
+  opacity: 0.6;
+}
+
+.path-step-item.upcoming .step-indicator-mark {
+  border-color: var(--ink-muted);
+  color: var(--ink-muted);
+}
+
+.next-step-btn {
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  font-size: 15px;
+}

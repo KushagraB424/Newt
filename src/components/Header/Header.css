@@ -1,0 +1,234 @@
+.newt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--card);
+  border-bottom: var(--border-stroke);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  transition: border-bottom 200ms ease, background-color 200ms ease;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.brand-logo-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.brand-wordmark {
+  font-family: "Fredoka", cursive, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.nav-tab-btn {
+  background: transparent;
+  border: 2px solid transparent;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-label);
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all var(--motion-press) ease;
+}
+
+.nav-tab-btn:hover {
+  color: var(--ink);
+  background-color: var(--paper);
+}
+
+.nav-tab-btn.active {
+  background-color: var(--paper);
+  color: var(--ink);
+  border-color: var(--ink);
+  font-weight: 800;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.student-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 12px;
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--motion-press) ease;
+}
+
+.student-profile-btn:hover {
+  background-color: var(--card);
+  transform: translateY(-2px);
+}
+
+.profile-avatar-emoji {
+  font-size: 14px;
+}
+
+.profile-name-text {
+  font-family: var(--font-family-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.profile-worlds-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  background-color: var(--card);
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--grid);
+}
+
+/* Grade Selector Segmented Pill */
+.grade-selector-group {
+  display: flex;
+  background-color: var(--paper);
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--ink);
+}
+
+.grade-pill {
+  border: none;
+  background: transparent;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all var(--motion-press) ease;
+  white-space: nowrap;
+}
+
+.grade-pill.active {
+  background-color: var(--spark);
+  color: #1f2a44;
+  font-weight: 800;
+  box-shadow: 0 2px 0 var(--spark-edge);
+}
+
+/* Independent Dark Mode Checkbox / Switch */
+.dark-mode-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dark-mode-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.dark-mode-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--ink);
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-family-display);
+  font-size: 13px;
+  font-weight: 700;
+  transition: all var(--motion-press) ease;
+}
+
+.dark-mode-toggle-label:hover .dark-mode-indicator {
+  background-color: var(--card);
+}
+
+.dark-mode-toggle-label.is-dark .dark-mode-indicator {
+  background-color: var(--tutor-soft);
+  border-color: var(--tutor);
+  color: var(--ink);
+  box-shadow: 0 2px 0 var(--tutor);
+}
+
+.dark-mode-icon {
+  font-size: 14px;
+}
+
+/* Accessibility Tools */
+.header-accessibility-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.tool-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background-color: var(--card);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 15px;
+  transition: all var(--motion-press) ease;
+}
+
+.tool-icon-btn:hover {
+  background-color: var(--paper);
+}
+
+.tool-icon-btn.active {
+  background-color: var(--sky-soft);
+  border-color: var(--sky);
+  color: var(--sky);
+}
+
+.mascot-toggle-pill {
+  width: auto;
+  border-radius: var(--radius-pill);
+  padding: 0 var(--space-3);
+}
+
+.mascot-tag {
+  font-size: 13px;
+  font-weight: 700;
+}

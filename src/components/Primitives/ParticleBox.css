@@ -1,0 +1,49 @@
+.particle-box-stage {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.particle-canvas-frame {
+  background-color: var(--card);
+  border: var(--border-stroke);
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+}
+
+.particle-canvas {
+  display: block;
+}
+
+.particle-heat-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.heat-label {
+  font: var(--type-label);
+  color: var(--ink);
+}
+
+.heat-buttons {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.heat-btn {
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  font-size: 15px;
+}
+
+.heat-btn.active {
+  background-color: var(--spark);
+  box-shadow: 0 4px 0 var(--spark-edge);
+}

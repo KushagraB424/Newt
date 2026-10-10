@@ -1,0 +1,76 @@
+.talk-button-fixed-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-3) 0 var(--space-4) 0;
+  width: 100%;
+}
+
+.talk-button-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.talk-mute-toggle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: var(--border-stroke);
+  background-color: var(--card);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--motion-press) ease;
+}
+
+.talk-mute-toggle:hover {
+  background-color: var(--paper);
+}
+
+.talk-mute-toggle.muted {
+  color: var(--not-yet-deep);
+  background-color: var(--not-yet-soft);
+}
+
+.talk-main-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target);
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-pill);
+  border: var(--border-stroke);
+  background-color: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 4px 0 var(--ink);
+  transition: all var(--motion-press) ease;
+}
+
+.talk-main-btn:hover {
+  background-color: var(--paper);
+}
+
+.talk-main-btn.listening {
+  min-height: var(--tap-target-lg);
+  padding: 0 var(--space-6);
+  background-color: var(--tutor);
+  color: #ffffff;
+  border-color: var(--tutor);
+  box-shadow: 0 4px 0 #462bb8;
+  transform: scale(1.05);
+}
+
+.talk-main-btn.muted {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.talk-btn-caption {
+  font: var(--type-button);
+}

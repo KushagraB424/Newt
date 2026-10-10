@@ -1,0 +1,112 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 20, 36, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: backdrop-fade 200ms ease;
+}
+
+@keyframes backdrop-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.onboarding-modal-card {
+  width: 100%;
+  max-width: 660px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.onboarding-intro-strip {
+  background-color: var(--card);
+  border: var(--border-stroke);
+  border-radius: var(--card-radius);
+  padding: var(--space-4) var(--space-5);
+}
+
+.profile-input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.name-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+  min-width: 200px;
+}
+
+.field-label {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.name-text-input {
+  height: 48px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--ink);
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-family-display);
+  font-size: 18px;
+  font-weight: 600;
+  outline: none;
+}
+
+.name-text-input:focus {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.grade-selector-subgroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.grade-pill-wrapper {
+  display: flex;
+  background-color: var(--paper);
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--ink);
+}
+
+.grade-select-btn {
+  border: none;
+  background: transparent;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all var(--motion-press) ease;
+}
+
+.grade-select-btn.active {
+  background-color: var(--spark);
+  color: #1f2a44;
+  font-weight: 800;
+  box-shadow: 0 2px 0 var(--spark-edge);
+}

@@ -1,0 +1,127 @@
+.hint-ladder-container {
+  background-color: var(--card);
+  border: var(--border-stroke);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  animation: ladder-slide 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ladder-slide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hint-ladder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--grid);
+  padding-bottom: var(--space-3);
+}
+
+.hint-ladder-title {
+  font: var(--type-title);
+  color: var(--ink);
+  margin: 0;
+}
+
+.hint-close-btn {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  padding: var(--space-1) var(--space-4);
+  font: var(--type-label);
+  cursor: pointer;
+}
+
+.rungs-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.rung-card {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--grid);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: all var(--motion-reveal) ease;
+}
+
+.rung-card.revealed {
+  border-color: var(--tutor);
+  background-color: var(--card);
+}
+
+.rung-card.current {
+  border-color: var(--sky);
+  background-color: var(--sky-soft);
+}
+
+.rung-card.locked {
+  opacity: 0.6;
+  background-color: var(--paper);
+  border-style: dashed;
+}
+
+.rung-step-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.rung-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--ink);
+  color: #fff;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.rung-card.current .rung-number {
+  background-color: var(--sky);
+}
+
+.rung-label {
+  font: var(--type-label);
+  color: var(--ink);
+}
+
+.rung-text {
+  font: var(--type-body);
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.rung-locked-hint {
+  font-size: 14px;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.hint-ladder-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
+.next-rung-btn {
+  width: 100%;
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Lilac temporary mascot SVG matching spec token #6b4de0 / #ebe6ff -->
+  <circle cx="60" cy="62" r="42" fill="#ebe6ff" stroke="#6b4de0" stroke-width="4"/>
+  <!-- Lilac Crest -->
+  <circle cx="40" cy="28" r="8" fill="#a08fff"/>
+  <circle cx="60" cy="24" r="10" fill="#6b4de0"/>
+  <circle cx="80" cy="28" r="8" fill="#a08fff"/>
+  <!-- Eyes -->
+  <circle cx="46" cy="54" r="7" fill="#1f2a44"/>
+  <circle cx="74" cy="54" r="7" fill="#1f2a44"/>
+  <circle cx="44" cy="51" r="2.5" fill="#ffffff"/>
+  <circle cx="72" cy="51" r="2.5" fill="#ffffff"/>
+  <!-- Smile -->
+  <path d="M 50 68 Q 60 78 70 68" stroke="#1f2a44" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Cheeks -->
+  <circle cx="36" cy="66" r="5" fill="#ffd35c" opacity="0.6"/>
+  <circle cx="84" cy="66" r="5" fill="#ffd35c" opacity="0.6"/>
+</svg>

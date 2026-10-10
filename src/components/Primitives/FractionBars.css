@@ -1,0 +1,89 @@
+.fraction-bars-stage {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.fraction-label {
+  font: var(--type-numeral);
+  color: var(--ink);
+  min-width: 52px;
+  text-align: right;
+}
+
+.fraction-bar-track {
+  flex: 1;
+  display: flex;
+  height: 56px;
+  background-color: var(--card);
+  border: var(--border-stroke);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.fraction-segment {
+  flex: 1;
+  height: 100%;
+  background-color: var(--card);
+  border: none;
+  border-right: 2px solid var(--ink);
+  cursor: pointer;
+  transition: background-color var(--motion-press) ease;
+}
+
+.fraction-segment:last-child {
+  border-right: none;
+}
+
+.fraction-segment.shaded {
+  background-color: var(--sky);
+}
+
+.fraction-segment:hover:not(.shaded) {
+  background-color: var(--sky-soft);
+}
+
+.fraction-cut-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--card);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-stroke);
+  border-radius: var(--radius-pill);
+}
+
+.cut-title {
+  font: var(--type-label);
+  color: var(--ink);
+}
+
+.cut-chips {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.cut-chip {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-pill);
+  border: var(--border-stroke);
+  background-color: var(--card);
+  color: var(--ink);
+  font: var(--type-label);
+  cursor: pointer;
+  transition: all var(--motion-press) ease;
+}
+
+.cut-chip.active {
+  background-color: var(--spark);
+  box-shadow: 0 3px 0 var(--spark-edge);
+}

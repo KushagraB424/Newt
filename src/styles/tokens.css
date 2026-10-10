@@ -1,0 +1,276 @@
+/* ==========================================================================
+   NEWT DESIGN SYSTEM TOKENS
+   Specification Source: Claude Artifact ExjXH2LCMgvU15LdczS2oo & Primitives Spec
+   ========================================================================== */
+
+:root {
+  /* Mascot Fixed Colors */
+  --newt-clay: #c37a5d;
+  --newt-clay-light: #df9378;
+  --newt-spot: #b1573d;
+  --newt-cream: #decdaf;
+  --newt-brown: #382711;
+  --clay-paper: #f4ead5;
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radius Scale */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --radius-mid-card: 16px;
+  --radius-mid-control: 10px;
+
+  /* Tap targets */
+  --tap-target: 56px;
+  --tap-target-lg: 72px;
+
+  /* Animation Durations */
+  --motion-press: 120ms;
+  --motion-reveal: 240ms;
+  --motion-spring: 320ms;
+  --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   GRADE LEVEL TYPOGRAPHY & CHROME
+   ========================================================================== */
+
+/* Grades 4–5 (Explorer) — Picture-book aesthetic */
+:root,
+[data-grade="explorer"] {
+  --font-family-display: "Fredoka", cursive, sans-serif;
+  --font-family-voice: "Fredoka", cursive, sans-serif;
+  --font-family-body: "Nunito", sans-serif;
+  --font-family-mono: "JetBrains Mono", monospace;
+
+  --font-size-display-1: 36px;
+  --font-weight-display-1: 600;
+  --line-height-display-1: 42px;
+
+  --font-size-title: 26px;
+  --font-weight-title: 600;
+  --line-height-title: 32px;
+
+  --font-size-bubble: 22px;
+  --font-weight-bubble: 500;
+  --line-height-bubble: 30px;
+
+  --font-size-button: 20px;
+  --font-weight-button: 600;
+  --line-height-button: 24px;
+
+  --font-size-body-lg: 20px;
+  --font-weight-body-lg: 600;
+  --line-height-body-lg: 30px;
+
+  --font-size-body: 18px;
+  --font-weight-body: 600;
+  --line-height-body: 26px;
+
+  --font-size-label: 15px;
+  --font-weight-label: 700;
+  --line-height-label: 20px;
+
+  --font-size-numeral: 24px;
+  --font-weight-numeral: 800;
+  --line-height-numeral: 28px;
+
+  --border-stroke-width: 3px;
+  --border-stroke: 3px solid var(--ink);
+  --card-radius: var(--radius-lg);
+  --control-radius: var(--radius-md);
+  --btn-edge-depth: 4px;
+  --handle-size: 44px;
+}
+
+/* Grades 6–8 (Middle School) — Grown-up, clean, modern */
+[data-grade="middle"] {
+  --font-family-display: "Manrope", sans-serif;
+  --font-family-voice: "Manrope", sans-serif;
+  --font-family-body: "Manrope", sans-serif;
+  --font-family-mono: "JetBrains Mono", monospace;
+
+  --font-size-display-1: 30px;
+  --font-weight-display-1: 800;
+  --line-height-display-1: 38px;
+
+  --font-size-title: 20px;
+  --font-weight-title: 800;
+  --line-height-title: 28px;
+
+  --font-size-bubble: 16px;
+  --font-weight-bubble: 500;
+  --line-height-bubble: 24px;
+
+  --font-size-button: 16px;
+  --font-weight-button: 700;
+  --line-height-button: 22px;
+
+  --font-size-body-lg: 18px;
+  --font-weight-body-lg: 600;
+  --line-height-body-lg: 26px;
+
+  --font-size-body: 16px;
+  --font-weight-body: 500;
+  --line-height-body: 25px;
+
+  --font-size-label: 14px;
+  --font-weight-label: 700;
+  --line-height-label: 20px;
+
+  --font-size-numeral: 22px;
+  --font-weight-numeral: 600;
+  --line-height-numeral: 26px;
+
+  --border-stroke-width: 1px;
+  --border-stroke: 1px solid var(--grid-border);
+  --card-radius: var(--radius-mid-card);
+  --control-radius: var(--radius-mid-control);
+  --btn-edge-depth: 2px;
+  --handle-size: 36px;
+}
+
+/* ==========================================================================
+   COLOR SCHEMES (LIGHT VS DARK)
+   ========================================================================== */
+
+/* --- Explorer Light (Default) --- */
+:root,
+[data-grade="explorer"]:not([data-dark="true"]) {
+  --paper: #f3f8ff;
+  --card: #ffffff;
+  --grid: #d3e2f6;
+  --grid-border: #b8cde6;
+  --video: #111827;
+
+  --ink: #1f2a44;
+  --ink-muted: #56627f;
+
+  --spark: #ffc531;
+  --spark-edge: #d99a00;
+  --spark-deep: #7a5400;
+
+  --got-it: #3fb86e;
+  --got-it-deep: #1c6a3b;
+  --got-it-soft: #dcf5e5;
+
+  --not-yet: #f2843f;
+  --not-yet-deep: #a84a0d;
+  --not-yet-soft: #ffe8d9;
+
+  --tutor: #6b4de0;
+  --tutor-soft: #ebe6ff;
+  --student-soft: #e9f2ff;
+
+  --sky: #3b82f6;
+  --sky-soft: #dbeafe;
+}
+
+/* --- Explorer Dark --- */
+[data-grade="explorer"][data-dark="true"] {
+  --paper: #101426;
+  --card: #181f33;
+  --grid: #283152;
+  --grid-border: #3d4a75;
+  --video: #0b0d14;
+
+  --ink: #eef2ff;
+  --ink-muted: #9aa5c4;
+
+  --spark: #ffc531;
+  --spark-edge: #d99a00;
+  --spark-deep: #ffd35c;
+
+  --got-it: #4fd88a;
+  --got-it-deep: #4fd88a;
+  --got-it-soft: #193125;
+
+  --not-yet: #ff9a5c;
+  --not-yet-deep: #ff9a5c;
+  --not-yet-soft: #382218;
+
+  --tutor: #a08fff;
+  --tutor-soft: #252246;
+  --student-soft: #262c4a;
+
+  --sky: #6ea8ff;
+  --sky-soft: #24304e;
+}
+
+/* --- Middle School Light --- */
+[data-grade="middle"]:not([data-dark="true"]) {
+  --paper: #f6f6fb;
+  --card: #ffffff;
+  --grid: #e2e4ef;
+  --grid-border: #cfd3e3;
+  --video: #111827;
+
+  --ink: #1c2333;
+  --ink-muted: #6b7386;
+
+  --spark: #ffc531;
+  --spark-edge: #d99a00;
+  --spark-deep: #7a5400;
+
+  --got-it: #3fb86e;
+  --got-it-deep: #1c6a3b;
+  --got-it-soft: #dcf5e5;
+
+  --not-yet: #f2843f;
+  --not-yet-deep: #a84a0d;
+  --not-yet-soft: #ffe8d9;
+
+  --tutor: #5b3fd6;
+  --tutor-soft: #f3f0fd;
+  --student-soft: #ede9fb;
+
+  --sky: #2f6fed;
+  --sky-soft: #e3ebfd;
+}
+
+/* --- Middle School Dark --- */
+[data-grade="middle"][data-dark="true"] {
+  --paper: #141724;
+  --card: #1b1f2c;
+  --grid: #2a2f42;
+  --grid-border: #363d55;
+  --video: #0b0d14;
+
+  --ink: #e8cbf3;
+  --ink-muted: #98a1b6;
+
+  --spark: #ffc531;
+  --spark-edge: #d99a00;
+  --spark-deep: #ffd35c;
+
+  --got-it: #4fd88a;
+  --got-it-deep: #4fd88a;
+  --got-it-soft: #1c3328;
+
+  --not-yet: #ff9a5c;
+  --not-yet-deep: #ff9a5c;
+  --not-yet-soft: #3a2418;
+
+  --tutor: #a08fff;
+  --tutor-soft: #252246;
+  --student-soft: #2b2750;
+
+  --sky: #6ea8ff;
+  --sky-soft: #26314f;
+}
+
+/* Easy read override */
+[data-easy-read="true"] {
+  --font-family-body: "Lexend", sans-serif;
+  --font-family-voice: "Lexend", sans-serif;
+}
