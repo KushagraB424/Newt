@@ -1,5 +1,6 @@
 import React from "react";
 import { WelcomeCard } from "../components/Home/WelcomeCard";
+import { useNewtAuth, SignInButton } from "../auth/ClerkAuthProvider";
 import "./HomeView.css";
 
 export interface HomeViewProps {
@@ -21,6 +22,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onStartLesson,
   onOpenMap,
 }) => {
+  const { isConfigured, isSignedIn, userEmail } = useNewtAuth();
   const isMiddle = gradeLevel === "middle";
   const primaryWorld = selectedWorlds[0] || "minecraft";
   const isLinearMastered = completedTopics.includes("linear-eq") || completedTopics.includes("slope");
@@ -57,6 +59,32 @@ export const HomeView: React.FC<HomeViewProps> = ({
         onKeepGoing={() => onStartLesson(nextTargetTopic)}
         onSomethingNew={() => onStartLesson("balance")}
       />
+
+      {/* Account Status / Sync Banner */}
+      {isSignedIn ? (
+        <div className="home-account-banner signed-in">
+          <div className="account-status-text">
+            <span className="account-dot"></span>
+            <span>
+              Connected to Clerk account: <strong>{userEmail || kidName}</strong> — All progress & badges are synced!
+            </span>
+          </div>
+        </div>
+      ) : isConfigured ? (
+        <div className="home-account-banner signed-out">
+          <div className="account-status-text">
+            <span>🎒</span>
+            <span>
+              Playing in local mode. Sign in with Clerk to save your badges and streaks across devices!
+            </span>
+          </div>
+          <SignInButton mode="modal">
+            <button type="button" className="btn-signin-link">
+              Sign In to Save →
+            </button>
+          </SignInButton>
+        </div>
+      ) : null}
 
       {/* Main Exploration Section */}
       <section className="home-explore-section">

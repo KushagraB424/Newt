@@ -163,3 +163,59 @@
   padding: 0 var(--space-3);
   font-size: 14px;
 }
+
+.home-account-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background-color: var(--card);
+  border: 1.5px solid var(--grid);
+  font-family: var(--font-family-body);
+  font-size: 13px;
+  color: var(--ink);
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.home-account-banner.signed-in {
+  background-color: var(--got-it-soft);
+  border-color: var(--got-it);
+}
+
+.home-account-banner.signed-out {
+  background-color: var(--paper);
+  border-color: var(--spark-edge);
+}
+
+.account-status-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.account-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--got-it);
+}
+
+.btn-signin-link {
+  background: var(--spark);
+  border: 1.5px solid var(--ink);
+  color: #1f2a44;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-display);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 1px 0 var(--spark-edge);
+}
+
+.btn-signin-link:hover {
+  transform: translateY(-1px);
+}
+

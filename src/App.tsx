@@ -9,40 +9,36 @@ import { ShelfView } from "./views/ShelfView";
 import { MapView } from "./views/MapView";
 import { CelebrationView } from "./views/CelebrationView";
 import { getTopicInfo } from "./data/topics";
+import { ClerkAuthProvider, useNewtAuth } from "./auth/ClerkAuthProvider";
+import { loadUserProgress, saveUserProgress, type UserProgressData } from "./utils/userProgress";
 import "./App.css";
 
-export function App() {
-  const [studentName, setStudentName] = useState<string>("Maya");
-  const [gradeLevel, setGradeLevel] = useState<GradeLevel>("explorer");
-  const [selectedWorlds, setSelectedWorlds] = useState<string[]>(["minecraft", "soccer"]);
+function NewtAppInner() {
+  const { userId, userName } = useNewtAuth();
+
+  const [progress, setProgress] = useState<UserProgressData>(() =>
+    loadUserProgress(userId, userName)
+  );
+
   const [isOnboardingOpen, setIsOnboardingOpen] = useState<boolean>(false);
   const [isSessionEndOpen, setIsSessionEndOpen] = useState<boolean>(false);
-
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-  const [easyRead, setEasyRead] = useState<boolean>(false);
-  const [reducedMotion, setReducedMotion] = useState<boolean>(false);
-  const [isMuted, setIsMuted] = useState<boolean>(false);
-  const [mascotVariant, setMascotVariant] = useState<"clay" | "lilac">("clay");
   const [activeView, setActiveView] = useState<ActiveView>("home");
-
-  const [completedTopics, setCompletedTopics] = useState<string[]>(() => {
-    try {
-      const stored = localStorage.getItem("newt_completed_topics");
-      if (stored) return JSON.parse(stored);
-    } catch {
-      // safe fallback
-    }
-    // Default to linear-eq mastered as the user has just finished it
-    return ["linear-eq"];
-  });
-
-  const [currentTopic, setCurrentTopic] = useState<string>(() => {
-    const stored = localStorage.getItem("newt_current_topic");
-    if (stored) return stored;
-    return "systems";
-  });
-
   const [justMasteredTopic, setJustMasteredTopic] = useState<string>("linear-eq");
+
+  // Keep progress in sync whenever Clerk user account switches (e.g. sign in or sign out)
+  useEffect(() => {
+    setProgress(loadUserProgress(userId, userName));
+  }, [userId, userName]);
+
+  const {
+    studentName,
+    gradeLevel,
+    selectedWorlds,
+    completedTopics,
+    currentTopic,
+    preferences,
+  } = progress;
+  const { darkMode, easyRead, reducedMotion, isMuted, mascotVariant } = preferences;
 
   // Keep DOM root attributes in sync with state for CSS tokens
   useEffect(() => {
@@ -64,62 +60,92 @@ export function App() {
   }, [gradeLevel, darkMode, easyRead, reducedMotion]);
 
   const handleStartLesson = (topicId: string) => {
-    setCurrentTopic(topicId);
-    try {
-      localStorage.setItem("newt_current_topic", topicId);
-    } catch {
-      // safe fallback
-    }
+    const updated = saveUserProgress(userId, { currentTopic: topicId });
+    setProgress(updated);
     setActiveView("lesson");
   };
 
   const handleMasteryReached = () => {
     setJustMasteredTopic(currentTopic);
-    const updated = completedTopics.includes(currentTopic)
+    const updatedCompleted = completedTopics.includes(currentTopic)
       ? completedTopics
       : [...completedTopics, currentTopic];
-    setCompletedTopics(updated);
-    try {
-      localStorage.setItem("newt_completed_topics", JSON.stringify(updated));
-    } catch {
-      // safe fallback
-    }
 
     const info = getTopicInfo(currentTopic);
-    setCurrentTopic(info.nextTopicId);
-    try {
-      localStorage.setItem("newt_current_topic", info.nextTopicId);
-    } catch {
-      // safe fallback
-    }
-
+    const updated = saveUserProgress(userId, {
+      completedTopics: updatedCompleted,
+      currentTopic: info.nextTopicId,
+    });
+    setProgress(updated);
     setActiveView("celebration");
   };
 
   const handleSaveProfile = (profile: { name: string; grade: GradeLevel; worlds: string[] }) => {
-    setStudentName(profile.name);
-    setGradeLevel(profile.grade);
-    setSelectedWorlds(profile.worlds);
+    const updated = saveUserProgress(userId, {
+      studentName: profile.name,
+      gradeLevel: profile.grade,
+      selectedWorlds: profile.worlds,
+    });
+    setProgress(updated);
+  };
+
+  const handleToggleDarkMode = () => {
+    const updated = saveUserProgress(userId, {
+      preferences: { ...preferences, darkMode: !darkMode },
+    });
+    setProgress(updated);
+  };
+
+  const handleToggleEasyRead = () => {
+    const updated = saveUserProgress(userId, {
+      preferences: { ...preferences, easyRead: !easyRead },
+    });
+    setProgress(updated);
+  };
+
+  const handleToggleReducedMotion = () => {
+    const updated = saveUserProgress(userId, {
+      preferences: { ...preferences, reducedMotion: !reducedMotion },
+    });
+    setProgress(updated);
+  };
+
+  const handleToggleMute = () => {
+    const updated = saveUserProgress(userId, {
+      preferences: { ...preferences, isMuted: !isMuted },
+    });
+    setProgress(updated);
+  };
+
+  const handleToggleMascotVariant = () => {
+    const updated = saveUserProgress(userId, {
+      preferences: {
+        ...preferences,
+        mascotVariant: mascotVariant === "clay" ? "lilac" : "clay",
+      },
+    });
+    setProgress(updated);
   };
 
   return (
     <div className="app-container">
-      {/* Header with decoupled Grade Selector, Dark Mode Checkbox, and Profile/Worlds Button */}
+      {/* Header with Clerk User Controls, Grade Selector, Dark Mode, Profile/Worlds */}
       <Header
         gradeLevel={gradeLevel}
-        onGradeChange={(g) => setGradeLevel(g)}
+        onGradeChange={(g) => {
+          const updated = saveUserProgress(userId, { gradeLevel: g });
+          setProgress(updated);
+        }}
         darkMode={darkMode}
-        onToggleDarkMode={() => setDarkMode((p) => !p)}
+        onToggleDarkMode={handleToggleDarkMode}
         easyRead={easyRead}
-        onToggleEasyRead={() => setEasyRead((p) => !p)}
+        onToggleEasyRead={handleToggleEasyRead}
         reducedMotion={reducedMotion}
-        onToggleReducedMotion={() => setReducedMotion((p) => !p)}
+        onToggleReducedMotion={handleToggleReducedMotion}
         isMuted={isMuted}
-        onToggleMute={() => setIsMuted((p) => !p)}
+        onToggleMute={handleToggleMute}
         mascotVariant={mascotVariant}
-        onToggleMascotVariant={() =>
-          setMascotVariant((p) => (p === "clay" ? "lilac" : "clay"))
-        }
+        onToggleMascotVariant={handleToggleMascotVariant}
         activeView={activeView}
         onViewChange={(v) => setActiveView(v)}
         studentName={studentName}
@@ -145,7 +171,7 @@ export function App() {
           <LessonView
             topicId={currentTopic}
             isMuted={isMuted}
-            onToggleMute={() => setIsMuted((p) => !p)}
+            onToggleMute={handleToggleMute}
             theme={gradeLevel === "middle" ? (darkMode ? "middle-dark" : "middle") : "explorer"}
             kidName={studentName}
             selectedWorlds={selectedWorlds}
@@ -188,7 +214,7 @@ export function App() {
         kidName={studentName}
         summaryAccomplishment="You figured out how slope measures steepness by comparing vertical rise to horizontal run."
         nextUpPreview="Next time: we'll discover how the y-intercept shifts the line up and down the y-axis."
-        daysActiveThisWeek={4}
+        daysActiveThisWeek={progress.streakDays || 4}
         isOpen={isSessionEndOpen}
         onFinishSession={() => {
           setIsSessionEndOpen(false);
@@ -196,6 +222,14 @@ export function App() {
         }}
       />
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <ClerkAuthProvider>
+      <NewtAppInner />
+    </ClerkAuthProvider>
   );
 }
 

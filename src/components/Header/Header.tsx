@@ -1,5 +1,6 @@
 import React from "react";
 import { Mascot } from "../Mascot/Mascot";
+import { AuthControls } from "../Auth/AuthControls";
 import "./Header.css";
 
 export type GradeLevel = "explorer" | "middle";
@@ -92,6 +93,9 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Controls & Accessibility */}
       <div className="header-right">
+        {/* Clerk User / Auth Controls */}
+        <AuthControls />
+
         {/* Student Profile & Worlds Chip */}
         {onOpenProfile && (
           <button
